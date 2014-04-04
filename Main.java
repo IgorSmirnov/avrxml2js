@@ -9,7 +9,7 @@ public class Main {
 	{
 		String r = "\n";
 		r += n;
-		r += Node.Name + ": ";
+		r += Node.Name.replace('-', '_') + ": ";
 		XMLNode x = Node.FirstChild;
 		if(x == null)
 		{
@@ -30,7 +30,7 @@ public class Main {
 				}
 				r += t + "]";
 			}
-			else r += "\"" + v + "\"";
+			else r += "\"" + v.replace("\n", " ").replace("\"", "'") + "\"";
 		} 
 		else
 		{
@@ -74,7 +74,7 @@ public class Main {
 				}
 			}
 				
-			r += t + "\n}";
+			r += t + "\n};\n";
 			String fn = Path + Part + ".js";
 			byte[] bb = r.getBytes("UTF-8");
 			FileOutputStream fw = new FileOutputStream(fn);
